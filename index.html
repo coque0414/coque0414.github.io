@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사랑하는 OO에게</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love</title>
+  <!-- 사랑스러운 손글씨 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <style>
+    /* 전체 배경과 폰트 설정 */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #FFC1E3, #FFA1C1);
+      font-family: 'Nanum Pen Script', cursive, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+    }
+    /* 메인 제목 스타일 */
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    /* 서브텍스트 스타일 */
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+    /* 하트 애니메이션 기본 스타일 */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: floatUp 3s ease-out forwards;
+    }
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+    .heart:after {
+      top: 0;
+      left: 10px;
+    }
+    /* 하트가 떠오르며 사라지는 애니메이션 */
+    @keyframes floatUp {
+      to {
+        transform: translateY(-200px) scale(0.5) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>사랑하는 몽이에게</h1>
-    <p>이 홈페이지는 나의 마음을 전하려고 만들었어.</p>
-    <p>항상 곁에 있어줘서 고마워! 사랑해 ❤️</p>
+  <h1>내 사랑 몽구띠 ❤️</h1>
+  <p>몽구띠 사랑앵.<br>몽구랑 함께하는 매 순간이 소중해~</p>
+  <script>
+    // 클릭할 때마다 하트 생성
+    document.addEventListener('click', function(e) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = e.clientX - 10 + 'px';
+      heart.style.top = e.clientY - 10 + 'px';
+      document.body.appendChild(heart);
+      // 애니메이션 후 요소 제거
+      setTimeout(() => {
+        heart.remove();
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
